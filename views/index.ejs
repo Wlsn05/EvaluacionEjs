@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./templates/header.ejs')%>
+
+    <body>
+        <div class="container">
+            <%- include('./templates/menu.ejs')%>
+                <div class="card">
+                    <div class="card-header"></div>
+                    <%if(phones.length> 0){%>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Id phone</th>
+                                    <th>Mark</th>
+                                    <th>Price</th>
+                                    <th>City</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% phones.forEach(phone => { %>
+                                    <tr>
+                                        <td>
+                                            <%= phone.id %>
+                                        </td>
+                                        <td>
+                                            <%= phone.name %>
+                                        </td>
+                                        <td>
+                                            <%= phone.value %>
+                                        </td>
+
+                                        <td><%= phone.city %></td>
+                                    </tr>
+                                    <%})%>
+                            </tbody>
+                        </table>
+                        <%}else{%>
+                            <a href="/new-record">Agregar nuevo dispositivo</a>
+                            <%}%>
+                </div>
+    </body>
+    <%- include('./templates/footer.ejs')%>
+
+</html>

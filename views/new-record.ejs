@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./templates/header.ejs')%>
+
+  <body>
+    <div class="container">
+      <%- include('./templates/menu.ejs')%>
+        <div class="card">
+          <div class="card-header">
+            <h1 style="text-align: center;">
+              <%= title%>
+            </h1>
+          </div>
+          <div class="card-body">
+            <form action="/new-record" method="POST">
+              <div class="mb-3">
+                <label for="id-phone" class="form-label">Id Phone</label>
+                <input type="number" class="form-control" id="id-phone">
+              </div>
+              <div class="mb-3">
+                <label for="name-phone" class="form-label"> Mark</label>
+                <input type="text" class="form-control" id="name-phone">
+              </div>
+              <div class="mb-3">
+                <label for="value-phone" class="form-label"> Price</label>
+                <input type="number" class="form-control" id="value-phone">
+              </div>
+              <div class="row m-3">
+                <div class="col-sm-6">
+                  <label for="dpto" class="form-label">Departament</label>
+                  <select id="dpto" class="form-select" name="dpto" required>
+                    <option value="">Seleccione Departamento</option>
+                    <%departments.forEach(dpto=> { %>
+                      <option value="<%= dpto.code%>">
+                        <%= dpto.name%>
+                      </option>
+                      <%})%>
+                  </select>
+                </div>
+                <div class="col-sm-6">
+                  <label for="towns" class="form-label">Town</label>
+                  <select id="towns" name="town" class="form-select" name="town" required>
+                    <option value="">Seleccione Municipio</option>
+                    <%towns.forEach(town=>{ %>
+                      <option value="<%= town.code%>">
+                        <%= town.name%>
+                      </option>
+                      <%})%>
+                  </select>
+                </div>
+              </div>
+              <button class="btn btn-primary" type="submit" id="btnSend">Agregar</button>
+            </form>
+          </div>
+        </div>
+
+    </div>
+    <%- include('./templates/footer.ejs')%>
+      <script src="scripts.js"></script>
+  </body>
+
+</html>
